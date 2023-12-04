@@ -4,13 +4,11 @@ from collections import deque
 input = list(open(0))
 
 def getParts(line):
-    data = line.split(': ')[1].split(' | ')
-    winning = data[0].split(' ')
-    have = data[1].strip('\n').split(' ')
+    data = line.split(':')[1].split('|')
+    winning, have = [list(map(int, j)) for j in [x.strip().split() for x in data]]
     winmap = {}
     for w in winning:
-        if len(w) > 0:
-            winmap[w] = True 
+        winmap[w] = True 
     return winmap, have
 
 def part1():
@@ -18,7 +16,7 @@ def part1():
     for line in input:
         score = 0
         winmap, have = getParts(line)
-        for h in  have:
+        for h in have:
             if h in winmap:
                 score = max(1, score * 2)
         res += score
