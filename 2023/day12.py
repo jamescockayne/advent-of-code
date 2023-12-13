@@ -35,7 +35,6 @@ def part2():
         line = line + '?' + line + '?' + line + '?' + line + '?' + line
         groups = groups + groups + groups + groups + groups
         res += backtrack(line, 0, 0, tuple(groups))
-
     print(res)
 
 part1()
